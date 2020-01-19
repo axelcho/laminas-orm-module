@@ -1,13 +1,8 @@
-# Doctrine 2 ORM Module for Zend Framework
+# Doctrine 2 ORM Module for Laminas
 
 [![Master branch build status](https://secure.travis-ci.org/doctrine/DoctrineORMModule.png?branch=master)](http://travis-ci.org/doctrine/DoctrineORMModule) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/doctrine/DoctrineORMModule/badges/quality-score.png?s=1e2a047fb1bb0f66937bcbc3a61f960c8089c835)](https://scrutinizer-ci.com/g/doctrine/DoctrineORMModule/) [![Code Coverage](https://scrutinizer-ci.com/g/doctrine/DoctrineORMModule/badges/coverage.png?s=377656ded5ffaaf4635acfb26729caa212fb5d76)](https://scrutinizer-ci.com/g/doctrine/DoctrineORMModule/) [![Latest Stable Version](https://poser.pugx.org/doctrine/doctrine-orm-module/v/stable.png)](https://packagist.org/packages/doctrine/doctrine-orm-module) [![Total Downloads](https://poser.pugx.org/doctrine/doctrine-orm-module/downloads.png)](https://packagist.org/packages/doctrine/doctrine-orm-module)
 
-DoctrineORMModule integrates Doctrine 2 ORM with Zend Framework quickly and easily.
-
-  - Doctrine 2 ORM support
-  - Multiple ORM entity managers
-  - Multiple DBAL connections
-  - Reuse existing PDO connections in DBAL connection
+This is drop-in replacement for DoctrineORMModule packages. 
 
 ## Installation
 
@@ -15,7 +10,7 @@ Installation of this module uses composer. For composer documentation, please re
 [getcomposer.org](http://getcomposer.org/).
 
 ```sh
-composer require doctrine/doctrine-orm-module
+composer require axelcho/laminas-orm-module
 ```
 
 Then add `DoctrineModule` and `DoctrineORMModule` to your `config/application.config.php` and create directory
@@ -80,42 +75,4 @@ return [
         ],
     ],
 ];
-```
-
-#### Full configuration options
-
-An exhaustive list of configuration options can be found directly in the Options classes of each module.
-
- * [DoctrineModule configuration](https://github.com/Doctrine/DoctrineModule/tree/master/src/DoctrineModule/Options)
- * [ORM Module Configuration](https://github.com/Doctrine/DoctrineORMModule/tree/master/src/DoctrineORMModule/Options)
- * [ORM Module Defaults](https://github.com/Doctrine/DoctrineORMModule/tree/master/config/module.config.php)
-
-You can find documentation about the module's features at the following links:
-
- * [DoctrineModule documentation](https://github.com/Doctrine/DoctrineModule/tree/master/docs)
- * [DoctrineORMModule documentation](https://github.com/Doctrine/DoctrineORMModule/tree/master/docs)
-
-## Registered Service names
-
- * `doctrine.connection.orm_default`: a `Doctrine\DBAL\Connection` instance
- * `doctrine.configuration.orm_default`: a `Doctrine\ORM\Configuration` instance
- * `doctrine.driver.orm_default`: default mapping driver instance
- * `doctrine.entitymanager.orm_default`: the `Doctrine\ORM\EntityManager` instance
- * `Doctrine\ORM\EntityManager`: an alias of `doctrine.entitymanager.orm_default`
- * `doctrine.eventmanager.orm_default`: the `Doctrine\Common\EventManager` instance
-
-#### Command Line
-Access the Doctrine command line as following
-
-```sh
-./vendor/bin/doctrine-module
-```
-
-#### Service Locator
-To access the entity manager, use the main service locator:
-
-```php
-// for example, in a controller:
-$em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
-$em = $this->getServiceLocator()->get(\Doctrine\ORM\EntityManager::class);
 ```
